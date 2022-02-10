@@ -1,70 +1,51 @@
-package JLab;
+package Lab21;
+
 import java.util.Scanner;
-public class matrix_multiplication {
 
-public static void main(String[] args) {
-// TODO Auto-generated method stub
-Scanner ob = new Scanner (System.in);
-System.out.println("Enter the no of rows of 1st matrix : ");
-int m = ob.nextInt();
-System.out.println("Enter the no of columns of 1st matrix : ");
-int n = ob.nextInt();
-System.out.println("Enter the no of rows of 2nd matrix : ");
-int p = ob.nextInt();
-System.out.println("Enter the no of columns of 2nd matrix : ");
-int q = ob.nextInt();
-int m1[][]= new int[m][n];
-int m2[][]= new int [p][q];
-int multi[][]= new int [m][q];
-if (n!=p)
-{
-System.out.println("Matrix Multiplication not possible.");
-}
-else
-{
-System.out.println("Enter the elements of 1st matrix:");
-
-for(int i=0;i<m;i++)
-{
-for (int j=0;j<n;j++)
-{
-m1[i][j]=ob.nextInt();
-}
-}
-System.out.println("Enter the elements of 2nd matrix:");
-
-for(int i=0;i<p;i++)
-{
-for (int j=0;j<q;j++)
-{
-m2[i][j]=ob.nextInt();
-}
-}
-System.out.println("The resultant matrix is:");
-
-for(int i=0;i<m;i++)
-{
-for (int j=0;j<q;j++)
-{
-multi[i][j]=0;
-  for (int k=0;k<n;k++)
-  {
-  multi[i][j]+=m1[i][k]*m2[k][j];
+public class matrix{  
+  public static void main(String args[]){  
+ 
+    int row1, col1, row2, col2;
+    Scanner s = new Scanner(System.in);
+    System.out.print("Enter number of rows in first matrix:");
+    row1 = s.nextInt();
+    System.out.print("Enter number of columns in first matrix:");
+    col1 = s.nextInt();
+    System.out.print("Enter number of rows in second matrix:");
+    row2 = s.nextInt();
+    System.out.print("Enter number of columns in second matrix:");
+    col2 = s.nextInt();
+ 
+    if (col1 != row2) {
+        System.out.println("Matrix multiplication is not possible");
+    }
+    else {
+        int a[][] = new int[row1][col1];
+        int b[][] = new int[row2][col2];
+        int c[][] = new int[row1][col2];
+ 
+        System.out.println("Enter values for matrix A : ");
+        for (int i = 0; i < row1; i++) {
+            for (int j = 0; j < col1; j++) 
+                a[i][j] = s.nextInt();
+        }
+        System.out.println("Enter values for matrix B : ");
+        for (int i = 0; i < row2; i++) {
+            for (int j = 0; j < col2; j++) 
+                b[i][j] = s.nextInt();
+        }
+ 
+        System.out.println("Matrix multiplication is : ");
+        for(int i = 0; i < row1; i++) {    
+            for(int j = 0; j < col2; j++){    
+              c[i][j]=0;      
+              for(int k = 0; k < col1; k++){      
+                c[i][j] += a[i][k] * b[k][j];      
+              }
+              System.out.print(c[i][j] + " ");  
+            }
+            System.out.println();
+        }    
+    }
   }
-}
-}
-
-for(int i=0;i<m;i++)
-{
-for (int j=0;j<q;j++)
-{
-System.out.print(multi[i][j]+"\t");
-}System.out.println("\n");
-   }
-
-
-
-}
-ob.close();
-}
 }
